@@ -1,4 +1,5 @@
-class VariantsController < ApplicationController
+class VariantsController < 
+  before_action :set_product
   before_action :set_variant, only: [:show, :edit, :update, :destroy]
 
   # GET /variants
@@ -62,9 +63,12 @@ class VariantsController < ApplicationController
   end
 
   private
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_variant
-      @variant = Variant.find(params[:id])
+      @variant = @product.variants.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
