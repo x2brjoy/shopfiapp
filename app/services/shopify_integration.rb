@@ -49,12 +49,10 @@ class ShopifyIntegration
           # If not already imported, create a new order
           order = Order.new(number: shopify_order.name,
                             email: shopify_order.email,
-                            first_name: shopify_order.billing_address.first_name,
-                            last_name: shopify_order.billing_address.last_name,
                             shopify_order_id: shopify_order.id,
+                            name: shopify_order.name,
                             order_date: shopify_order.created_at,
-                            total: shopify_order.total_price,
-                            financial_status: shopify_order.financial_status
+                            total: shopify_order.total_price
                             )
 
           # Iterate through the line_items

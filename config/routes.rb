@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :orders do
+    collection do
+      get 'import'
+    end
+  end
   resources :accounts do
     member do
       get 'test_connection'
